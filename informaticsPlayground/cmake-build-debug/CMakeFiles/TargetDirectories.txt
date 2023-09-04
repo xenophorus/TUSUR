@@ -1,0 +1,3 @@
+/home/alex/docs/dev/TUSUR/informaticsPlayground/cmake-build-debug/CMakeFiles/informaticsPlayground.dir
+/home/alex/docs/dev/TUSUR/informaticsPlayground/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/alex/docs/dev/TUSUR/informaticsPlayground/cmake-build-debug/CMakeFiles/rebuild_cache.dir
