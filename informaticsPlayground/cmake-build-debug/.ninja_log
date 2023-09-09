@@ -1,24 +1,4 @@
 # ninja log v5
-0	14	1693828658474291723	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-14	26	1693828658484292199	informaticsPlayground	bc5fb9910253c6a
-0	6	1693832080266107784	CMakeFiles/informaticsPlayground.dir/playGround.c.o	4017a50188b9c31a
-0	21	1693832080282775271	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-21	33	1693832080292775763	informaticsPlayground	4fc2e36a386739b6
-0	206	1693832254027928193	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-207	244	1693832254064596639	informaticsPlayground	4fc2e36a386739b6
-0	16	1693832591317481321	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-16	34	1693832591334148784	informaticsPlayground	4fc2e36a386739b6
-0	16	1693833702816645142	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-16	28	1693833702826645612	informaticsPlayground	4fc2e36a386739b6
-0	17	1693833894322736210	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-17	29	1693833894332736744	informaticsPlayground	4fc2e36a386739b6
-0	20	1693834880522308159	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-20	31	1693834880532308645	informaticsPlayground	4fc2e36a386739b6
-0	17	1693835001638176204	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-17	29	1693835001651510183	informaticsPlayground	4fc2e36a386739b6
-0	17	1693835035706489834	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-17	29	1693835035719823812	informaticsPlayground	4fc2e36a386739b6
-0	17	1693835063554501704	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-17	29	1693835063564502188	informaticsPlayground	4fc2e36a386739b6
-0	18	1693836558679846817	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-18	30	1693836558689847269	informaticsPlayground	4fc2e36a386739b6
+1	9	1694262962273983851	CMakeFiles/informaticsPlayground.dir/playGround.c.o	4017a50188b9c31a
+1	18	1694262962282983851	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
+18	30	1694262962293983851	informaticsPlayground	4fc2e36a386739b6

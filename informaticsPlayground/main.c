@@ -34,18 +34,35 @@ int fib(int n) {
     return looper(n - 1, 1, 0);
 }
 
-int main(int argc, char **argv) {
-//    system("chcp 1251");
-    int num;
-    num = 2;
-    f();
-    int a = factorial(7);
-    printf("%d\n", a);
-    int fn1 = fib(10);
-    printf("%d\n", fn1); /*
-    for (int i = 0; i < 10; ++i) {
-        printf("%d\n", i * 2);
+//int main(int argc, char **argv) {
+////    system("chcp 1251");
+//    int num;
+//    num = 2;
+//    f();
+//    int a = factorial(7);
+//    printf("%d\n", a);
+//    int fn1 = fib(10);
+//    printf("%d\n", fn1); /*
+//    for (int i = 0; i < 10; ++i) {
+//        printf("%d\n", i * 2);
+//
+//    }*/
+//    return 0;
+//}
 
-    }*/
+int main(void) {
+
+    char line[] = "_________________________________________________\n";
+    char stars[] = "********_________________________________________\n";
+
+    for (int i = 0; i < 13; ++i) {
+        if ((i > 0 ) && (i < 6)) {
+            printf(stars);
+        } else {
+            printf(line);
+        }
+    }
+
+
     return 0;
 }
