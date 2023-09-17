@@ -1,4 +1,12 @@
 # ninja log v5
+0	13	1694966298200973384	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
 1	9	1694262962273983851	CMakeFiles/informaticsPlayground.dir/playGround.c.o	4017a50188b9c31a
-1	18	1694262962282983851	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
-18	30	1694262962293983851	informaticsPlayground	4fc2e36a386739b6
+13	27	1694966298214973384	informaticsPlayground	4fc2e36a386739b6
+0	13	1694966324351973284	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
+13	24	1694966324362973284	informaticsPlayground	4fc2e36a386739b6
+0	14	1694966349331973189	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
+14	26	1694966349343973188	informaticsPlayground	4fc2e36a386739b6
+0	12	1694966646317972056	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
+12	25	1694966646329972056	informaticsPlayground	4fc2e36a386739b6
+0	13	1694966668481971971	CMakeFiles/informaticsPlayground.dir/main.c.o	948e9a0bd12d91e1
+13	29	1694966668497971971	informaticsPlayground	4fc2e36a386739b6
