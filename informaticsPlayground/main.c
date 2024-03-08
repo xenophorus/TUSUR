@@ -1,55 +1,112 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
+#include <limits.h>
 
-#define N 5
+int lessThanSqIdx(const int *arr, int arrSize) {
+    int counter = 0;
 
-int arrSum(const int *arr, int arrLen) {
-    int s = 0;
-    for (int i = 0; i < arrLen; ++i) {
-        s = s + arr[i];
+    for (int i = 0; i < arrSize; i++) {
+        if (i * i >= arr[i]) counter++;
     }
-    return s;
+
+    return counter;
 }
 
+long productBoundaryNegs(const int *arr, int arrSize) {
+    int fstNegIdx = -1, lastNegIdx = -1;
+    long result = 1;
+    for (int i = 0; i < arrSize; i++) {
+        if (arr[i] < 0) {
+            if (fstNegIdx < 0) {
+                fstNegIdx = i;
+            }
+        lastNegIdx = i;
+        }
+    }
+    if (lastNegIdx - fstNegIdx < 2) return 0;
+    for (int i = fstNegIdx + 1; i < lastNegIdx; i++) {
+        result *= arr[i];
+    }
+    return result;
+}
+
+void swapZeroMax(int *arr, int arrSize) {
+    int lastZeroIdx = -1;
+    int firstMaxIdx = -1;
+    int maxValue = INT_MIN;
+    int tmpValue;
+    for (int i = 0; i < arrSize; i++) {
+        if (maxValue < arr[i]) {
+            maxValue = arr[i];
+            firstMaxIdx = i;
+        }
+        if (arr[i] == 0) {
+            lastZeroIdx = i;
+        }
+    }
+    if (lastZeroIdx >= 0) {
+        tmpValue = arr[lastZeroIdx];
+        arr[lastZeroIdx] = arr[firstMaxIdx];
+        arr[firstMaxIdx] = tmpValue;
+        printf("Swapped %d and %d values\n", lastZeroIdx, firstMaxIdx);
+    } else {
+        printf("No values to swap\n");
+    }
+
+}
+
+void test();
 
 int main(void) {
 
-    char *str = "Hello world";
-    int l = strlen(str);
+    printf("Enter array size: \n");
 
-    printf("%d\n", l);
+    int arrSize;
+    scanf("%d", &arrSize);
 
-    for (; *str != '\0'; str++) {
-        printf("%c\n", *str);
+    int arr[arrSize];
+
+    printf("Enter array values: \n");
+    for (int i = 0; i < arrSize; i++) {
+        scanf("%d", &arr[i]);
     }
 
-    int* x = (int*) malloc(sizeof(int) * 16);
+    int lessThanSqIdxCount = lessThanSqIdx(arr, arrSize);
+    long productBoundaryNegsVal = productBoundaryNegs(arr, arrSize);
 
-    for (int i = 0; i < 11; ++i) {
-        x[i] = i * i;
-    }
+    printf("%d\n", lessThanSqIdxCount);
+    printf("%ld\n", productBoundaryNegsVal);
 
-    int a = sizeof(x);
-    printf("%d\n", *x);
+    swapZeroMax(arr, arrSize);
 
-    for (int i = 1; i < 101; ++i) {
-        printf("%10d", x[i]);
-        if (i % 10 == 0) {
-            printf("\n");
-        }
-    }
-
-    free(x);
-
-    double y[5] = {1.1, 2.2, 3.3, 4.4, 0.05};
-
-    for (int i = 0; i < 5; ++i) {
-        printf("%d - %f", i, y[i]);
-    }
+//    test();
 
     return 0;
+}
 
-    // p. 66, 4.3.2 Структуры
+void test() {
+
+    int arr1[] = {0,0,0,0, 1,1,1,1, 0};
+    int arr2[] = {1, 2, 5, 10, 17, 30, 0, 0, 0};
+    int arr3[] = {1, 17, 13, 9, -14, 17, -15, -12, 2};
+
+    printf("%s\n", "lessThanSqIdx");
+    lessThanSqIdx(arr1, 9) == 9 ? printf("%s\n", "true") : printf("%s\n", "false");
+    lessThanSqIdx(arr2, 9) == 3 ? printf("%s\n", "true") : printf("%s\n", "false");
+    lessThanSqIdx(arr3, 9) == 6 ? printf("%s\n", "true") : printf("%s\n", "false");
+
+    printf("%s\n", "productBoundaryNegs");
+    productBoundaryNegs(arr1, 9) == 0 ? printf("%s\n", "true") : printf("%s\n", "false");
+    productBoundaryNegs(arr2, 9) == 0 ? printf("%s\n", "true") : printf("%s\n", "false");
+    productBoundaryNegs(arr3, 9) == -255 ? printf("%s\n", "true") : printf("%s\n", "false");
+
+    printf("%s\n", "productBoundaryNegs");
+    swapZeroMax(arr1, 9);
+    printf("%d, %d\n", 4, 8);
+    swapZeroMax(arr2, 9);
+    printf("%d, %d\n", 5, 8);
+    swapZeroMax(arr3, 9);
+    printf("No swaps\n");
+
+    printf("%s", "");
+
 }

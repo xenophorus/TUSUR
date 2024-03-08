@@ -3,4 +3,4 @@ project(informaticsPlayground C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(informaticsPlayground main.c playGround.c)
+add_executable(informaticsPlayground lab1.c playGround.c main.c main5.c)
