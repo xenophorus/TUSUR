@@ -1,11 +1,9 @@
 package ru.xeno;
 
-
-import java.util.HashMap;
 import java.util.Map;
 
 abstract class AbsMoney {
-    abstract public void conversionTo(Money other);
+    abstract void conversionTo(Money other);
     abstract double conversionHandler(Money other);
     abstract public String toString();
     abstract public double getQuantity();
@@ -32,32 +30,27 @@ class CurrencyRate {
 }
 
 class Money extends AbsMoney {
-    private double rate = 1;
     private double quantity = 1;
     private String name = "";
+    private double rate;
 
-    public Money(String name, double rate, double quantity) {
+    public Money(String name, double quantity) {
         this.name = name;
-        this.rate = rate;
         this.quantity = quantity;
+        this.setRate();
     }
 
-    public Money(String name, double rate) {
+    public Money(String name) {
         this.name = name;
-        this.rate = rate;
+        this.setRate();
     }
 
-    public Money(double rate, double quantity) {
-        this.rate = rate;
-        this.quantity = quantity;
-    }
-
-    public Money(double rate) {
-        this.rate = rate;
+    void setRate() {
+        this.rate = CurrencyRate.rates.get(this.name);
     }
 
     @Override
-    public void conversionTo(Money other) {
+    void conversionTo(Money other) {
         String str = String.format("%.2f %s стоит %.2f %s",
                 this.quantity, this.name, this.conversionHandler(other), other.getName());
         System.out.println(str);
@@ -92,17 +85,15 @@ class Currency extends Money {
     private double quantity;
     private String name;
 
-    Currency(String name, double rate) {
-        super(name, rate);
+    Currency(String name) {
+        super(name);
         this.quantity = 1;
+        this.setRate();
     }
 
-    Currency(String name, double rate, double quantity) {
-        super(name, rate, quantity);
-    }
-
-    public void setRate(double rate) {
-        this.rate = rate;
+    Currency(String name, double quantity) {
+        super(name, quantity);
+        this.setRate();
     }
 
     public void setQuantity(double quantity) {
@@ -112,15 +103,16 @@ class Currency extends Money {
 
 class Dollar extends Money {
 
-    private double rate;
     private double quantity;
 
-    Dollar(double rate) {
-        super("USD", rate, 1);
+    Dollar() {
+        super("USD", 1);
+        this.setRate();
     }
 
-    Dollar(double rate, double quantity) {
-        super("USD", rate, quantity);
+    Dollar(double quantity) {
+        super("USD", quantity);
+        this.setRate();
     }
 
     public void setQuantity(double quantity) {
@@ -133,7 +125,8 @@ class Euro extends Money {
     private double quantity;
 
     Euro(double quantity) {
-        super("EUR", 1, quantity);
+        super("EUR", quantity);
+        this.setRate();
     }
 
     public void setQuantity(double quantity) {
@@ -143,18 +136,38 @@ class Euro extends Money {
 
 public class Main {
     public static void main(String[] args) {
-        Euro euro = new Euro(1);
-        Dollar dollar = new Dollar(1.0308, 100);
-        Currency rouble = new Currency("RUB", 110.4, 5100);
+        Euro euros = new Euro(1);
+        Dollar dollars = new Dollar(100);
+        Currency roubles = new Currency("RUB", 5100);
+        Currency yuan = new Currency("CNY");
+        Currency australianDollar = new Currency("AUD");
+        Currency bitcoin = new Currency("BTC", 5);
 
-        System.out.println(euro);
-        System.out.println(dollar);
-        System.out.println(rouble);
+        System.out.println(euros);
+        System.out.println(dollars);
+        System.out.println(roubles);
 
-        rouble.conversionTo(dollar);
-        rouble.conversionTo(euro);
-        dollar.conversionTo(euro);
-        dollar.conversionTo(rouble);
+        roubles.conversionTo(dollars);
+        euros.conversionTo(roubles);
+        dollars.conversionTo(euros);
+        dollars.conversionTo(roubles);
+        bitcoin.conversionTo(roubles);
+        bitcoin.conversionTo(dollars);
+        yuan.conversionTo(roubles);
+        australianDollar.conversionTo(roubles);
 
+        //test
+        System.out.println("--------------");
+        Currency roubToBTC = new Currency("RUB", 54788708.47);
+        Currency roubToAUD = new Currency("RUB", 68.65);
+        Currency roubToUSD100 = new Currency("RUB", 11042.91);
+        Currency roubToEUR = new Currency("RUB", 113.89);
+        Currency roubToCNY = new Currency("RUB", 15.08);
+
+        roubToUSD100.conversionTo(dollars);
+        roubToAUD.conversionTo(australianDollar);
+        roubToBTC.conversionTo(bitcoin);
+        roubToEUR.conversionTo(euros);
+        roubToCNY.conversionTo(yuan);
     }
 }
