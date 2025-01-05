@@ -1,14 +1,34 @@
 package ru.xeno;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 abstract class AbsMoney {
-
-
     abstract public void conversionTo(Money other);
     abstract double conversionHandler(Money other);
     abstract public String toString();
     abstract public double getQuantity();
     abstract public String getName();
+}
+
+class CurrencyRate {
+    /**
+     * Класс, по-хорошему, должен качать json с данными, но, поскольку это не отностися к заданию,
+     * воспользуюсь такой заглушкой.
+     * */
+
+    public static Map<String, Double> rates = Map.of(
+            "AED", 3.788187,
+            "AUD", 1.658917,
+            "BTC", 1.0393649e-5,
+            "CAD", 1.48985,
+            "CNY", 7.550096,
+            "EUR", 1.0,
+            "GBP", 0.830193,
+            "JPY", 162.238422,
+            "RUB", 113.890921,
+            "USD", 1.031349);
 }
 
 class Money extends AbsMoney {
@@ -49,7 +69,7 @@ class Money extends AbsMoney {
     }
 
     public String toString() {
-        return String.format("Валюта %s, курс %.4f, количество %.2f",
+        return String.format("Валюта %s, курс %.2f / EUR, количество %.2f",
                 this.name, this.rate, this.quantity);
     }
 
@@ -132,6 +152,9 @@ public class Main {
         System.out.println(rouble);
 
         rouble.conversionTo(dollar);
+        rouble.conversionTo(euro);
+        dollar.conversionTo(euro);
+        dollar.conversionTo(rouble);
 
     }
 }
