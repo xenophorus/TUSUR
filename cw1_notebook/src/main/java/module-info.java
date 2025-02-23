@@ -1,16 +1,10 @@
-module ru.xeno.notebook {
+module ru.xeno.notepad {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.web;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
-    requires net.synedra.validatorfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
-    requires com.almasb.fxgl.all;
 
-    opens ru.xeno.notebook to javafx.fxml;
-    exports ru.xeno.notebook;
+    opens ru.xeno.notepad to javafx.fxml;
+    exports ru.xeno.notepad;
 }

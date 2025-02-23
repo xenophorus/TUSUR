@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ru.xeno.notepad.NotepadController" spacing="5">
+    <MenuBar minHeight="25">
+        <Menu text="Файл">
+            <MenuItem text="Новый" onAction="#newFile" fx:id="fNew"/>
+            <MenuItem text="Открыть" onAction="#openFile" fx:id="fOpen"/>
+            <MenuItem text="Сохранить" onAction="#saveFile" fx:id="fSave"/>
+            <MenuItem text="Сохранить как" onAction="#saveAsFile" fx:id="fSaveAs"/>
+<!--            <MenuItem text="Close current file" id="fileCloseCurr"/>-->
+<!--            <MenuItem text="Close all" id="fileCloseAll"/>-->
+        </Menu>
+        <Menu text="Правка">
+            <MenuItem text="Отменить" onAction="#textUndo" fx:id="eUndo"/>
+            <MenuItem text="Повторить" onAction="#textRedo" fx:id="eRedo"/>
+            <SeparatorMenuItem/>
+            <MenuItem text="Копировать" onAction="#textCopy" fx:id="eCopy"/>
+            <MenuItem text="Вырезать" onAction="#textCut" fx:id="eCut"/>
+            <MenuItem text="Вставить" onAction="#textPaste" fx:id="ePaste"/>
+            <SeparatorMenuItem/>
+            <MenuItem text="Найти" onAction="#showFindPanel" fx:id="eFind"/>
+        </Menu>
+        <Menu text="Настройки">
+            <CheckMenuItem text="Переносить текст" onAction="#setWrap" fx:id="msWrap"/>
+        </Menu>
+        <Menu text="О программе">
+            <MenuItem text="О программе" onAction="#infoMessage"/>
+        </Menu>
+    </MenuBar>
+    <VBox fx:id="panelFind" spacing="5" alignment="CENTER_LEFT">
+        <padding>
+            <Insets right="10" left="10"/>
+        </padding>
+        <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS" spacing="5">
+            <Label text="Найти:" minWidth="75" alignment="CENTER_RIGHT"/>
+            <TextField fx:id="textToFind" HBox.hgrow="ALWAYS"/>
+            <Button text="Найти" minWidth="100" onAction="#findString" fx:id="findReplaceButton"/>
+            <HBox minWidth="120" spacing="5" alignment="CENTER_RIGHT">
+                <CheckBox fx:id="toReplace" onAction="#showReplacePanel"/>
+                <Label text="Заменить"/>
+                <Button minWidth="20" minHeight="20" text="X" onAction="#closePanel"/>
+            </HBox>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS" spacing="5" fx:id="fileReplace">
+            <Label text="Заменить:" minWidth="75" alignment="CENTER_RIGHT"/>
+            <TextField fx:id="textToReplace" HBox.hgrow="ALWAYS"/>
+            <Button text="Заменить все" minWidth="100" onAction="#replaceStringsAll"/>
+            <HBox minWidth="120" spacing="5" alignment="CENTER_LEFT">
+<!--                <Button text="Заменить все" minWidth="75" onAction="#replaceStringsAll"/>-->
+            </HBox>
+        </HBox>
+    </VBox>
+    <TextArea VBox.vgrow="ALWAYS" fx:id="textArea"/>
+</VBox>
